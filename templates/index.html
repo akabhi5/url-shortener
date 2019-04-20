@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+  <div class="main container">
+    <h2>Enter URL</h2>
+    <form class="my-2 my-lg-0" action="generate/" method="POST">
+      {% csrf_token %}
+      <input class="form-control mr-sm-2" placeholder="URL" type="text" name="ori_link" />
+      <br>
+      <input class="btn btn-success my-2 my-sm-0" type="submit" value="Generate" />
+    </form>
+  </div>
+
+  <div class="detail">
+    {% if all_links %}
+      <p>Links generated till now :</p>
+      {% for link in all_links %}
+        <p class="links"><a href="http://127.0.0.1:8000/{{link}}">http://127.0.0.1:8000/{{link}}</a></p>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+{% endblock %}
